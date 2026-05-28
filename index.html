@@ -1,19 +1,40 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8" />
+  <meta charset="UTF-8"/>
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>Elvix Technologies</title>
-  <link rel="stylesheet" href="style.css" />
-  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/aos@2.3.4/dist/aos.css" />
-  <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;500;700&display=swap" rel="stylesheet">
+  <title>Elvix Technologies | Web Development & Android Apps Chennai</title>
+  <meta name="description" content="Elvix Technologies builds websites, Android apps and AI solutions for businesses and students in Chennai."/>
+  <link rel="stylesheet" href="style.css"/>
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/aos@2.3.4/dist/aos.css"/>
+  <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;500;700&display=swap" rel="stylesheet"/>
 </head>
 <body>
 
+  <!-- CUSTOM CURSOR -->
+  <div class="cursor-dot"></div>
+  <div class="cursor-ring"></div>
+
+  <!-- LOADING SCREEN -->
+  <div id="loader">
+    <div class="loader-logo">El<span>vix</span></div>
+    <div class="loader-bar"><div class="loader-fill"></div></div>
+    <p class="loader-text">Loading experience...</p>
+  </div>
+
+  <!-- PARTICLES -->
   <div id="tsparticles"></div>
 
-  <nav>
-    <div class="logo">El<span>vix</span></div>
+  <!-- BACKGROUND ORBS -->
+  <div class="bg">
+    <div class="orb orb1"></div>
+    <div class="orb orb2"></div>
+    <div class="orb orb3"></div>
+  </div>
+
+  <!-- NAV -->
+  <nav id="navbar">
+    <div class="logo split-text">El<span>vix</span></div>
     <ul>
       <li><a href="#services">Services</a></li>
       <li><a href="#contact">Contact</a></li>
@@ -23,49 +44,106 @@
     </a>
   </nav>
 
+  <!-- HERO -->
   <section class="hero">
-    <p class="badge">🟢 Now taking projects</p>
-    <h1>We build things that<br><span id="typed-text"></span><span class="cursor">|</span></h1>
+    <div class="badge"><span class="dot"></span> Now taking projects</div>
+    <h1>We build things that<br><span id="typed-text"></span><span class="cursor-blink">|</span></h1>
     <p class="sub">Websites · Android Apps · AI Solutions</p>
     <div class="hero-btns">
       <a href="https://wa.me/919677721804?text=Hi!%20I%20want%20to%20start%20a%20project%20with%20Elvix" target="_blank">
-        <button class="btn-primary">Start a Project 🚀</button>
+        <button class="btn-primary split-text">Start a Project 🚀</button>
       </a>
       <a href="https://github.com/sireen123" target="_blank">
         <button class="btn-outline">See Our Work 🐙</button>
       </a>
     </div>
+    <div class="scroll-hint">
+      <div class="scroll-line"></div>
+      <span>scroll</span>
+    </div>
   </section>
 
+  <!-- WAVE DIVIDER -->
+  <div class="wave-divider">
+    <svg viewBox="0 0 1440 80" preserveAspectRatio="none">
+      <path d="M0,40 C360,80 1080,0 1440,40 L1440,80 L0,80 Z" fill="rgba(124,92,252,0.08)"/>
+    </svg>
+  </div>
+
+  <!-- SERVICES -->
   <section id="services" class="services">
     <div class="section-label" data-aos="fade-up">
       <span class="tag">What we do</span>
-      <h2>Services built for real results</h2>
+      <h2 class="split-text">Services built for real results</h2>
     </div>
     <div class="cards-grid">
-      <div class="card" data-tilt data-aos="fade-up" data-aos-delay="0">
-        <div class="card-icon">🌐</div>
-        <h3>Web Development</h3>
-        <p>Fast, beautiful websites that convert visitors into clients.</p>
+      <div class="card flip-card" data-aos="fade-up" data-aos-delay="0">
+        <div class="flip-inner">
+          <div class="flip-front">
+            <div class="card-icon">🌐</div>
+            <h3>Web Development</h3>
+            <p>Hover to know more</p>
+          </div>
+          <div class="flip-back">
+            <h3>Web Development</h3>
+            <p>React, HTML, CSS, JavaScript. Fast, beautiful, responsive websites that convert visitors into paying clients.</p>
+            <span class="card-tag">React · JS · CSS</span>
+          </div>
+        </div>
       </div>
-      <div class="card" data-tilt data-aos="fade-up" data-aos-delay="100">
-        <div class="card-icon">📱</div>
-        <h3>Android Apps</h3>
-        <p>Native Android apps with smooth UI and Firebase integration.</p>
+      <div class="card flip-card" data-aos="fade-up" data-aos-delay="100">
+        <div class="flip-inner">
+          <div class="flip-front">
+            <div class="card-icon">📱</div>
+            <h3>Android Apps</h3>
+            <p>Hover to know more</p>
+          </div>
+          <div class="flip-back">
+            <h3>Android Apps</h3>
+            <p>Native Android apps with smooth UI, Firebase, APIs and full backend integration.</p>
+            <span class="card-tag">Java · Kotlin · Firebase</span>
+          </div>
+        </div>
       </div>
-      <div class="card" data-tilt data-aos="fade-up" data-aos-delay="200">
-        <div class="card-icon">🤖</div>
-        <h3>AI Integration</h3>
-        <p>Smart features — chatbots, fraud detection, ML dashboards.</p>
+      <div class="card flip-card" data-aos="fade-up" data-aos-delay="200">
+        <div class="flip-inner">
+          <div class="flip-front">
+            <div class="card-icon">🤖</div>
+            <h3>AI Integration</h3>
+            <p>Hover to know more</p>
+          </div>
+          <div class="flip-back">
+            <h3>AI Integration</h3>
+            <p>Chatbots, fraud detection, smart dashboards. AI features built into your product.</p>
+            <span class="card-tag">Python · TensorFlow</span>
+          </div>
+        </div>
       </div>
-      <div class="card" data-tilt data-aos="fade-up" data-aos-delay="300">
-        <div class="card-icon">🎓</div>
-        <h3>Student Projects</h3>
-        <p>Final year projects built and guided from scratch to submission.</p>
+      <div class="card flip-card" data-aos="fade-up" data-aos-delay="300">
+        <div class="flip-inner">
+          <div class="flip-front">
+            <div class="card-icon">🎓</div>
+            <h3>Student Projects</h3>
+            <p>Hover to know more</p>
+          </div>
+          <div class="flip-back">
+            <h3>Student Projects</h3>
+            <p>Final year projects guided and built from scratch. We help you present with confidence.</p>
+            <span class="card-tag">All Tech Stacks</span>
+          </div>
+        </div>
       </div>
     </div>
   </section>
 
+  <!-- WAVE DIVIDER 2 -->
+  <div class="wave-divider wave2">
+    <svg viewBox="0 0 1440 80" preserveAspectRatio="none">
+      <path d="M0,40 C480,0 960,80 1440,40 L1440,80 L0,80 Z" fill="rgba(0,212,170,0.06)"/>
+    </svg>
+  </div>
+
+  <!-- STATS -->
   <section class="stats" data-aos="fade-up">
     <div class="stat">
       <h3 class="count" data-target="50">0</h3>
@@ -85,22 +163,24 @@
     </div>
   </section>
 
+  <!-- CONTACT -->
   <section id="contact" class="contact" data-aos="fade-up">
-    <h2>Let's build something great</h2>
+    <h2 class="split-text">Let's build something great</h2>
     <p>Drop a message — we reply within 24 hours</p>
     <div class="form-box">
       <form action="https://formspree.io/f/xojbyzjz" method="POST">
-        <input type="text" name="name" placeholder="Your name" required />
-        <input type="email" name="email" placeholder="Your email" required />
+        <input type="text" name="name" placeholder="Your name" required/>
+        <input type="email" name="email" placeholder="Your email" required/>
         <textarea name="message" placeholder="Tell us about your project..."></textarea>
         <button type="submit" class="btn-primary">Send Message →</button>
       </form>
     </div>
   </section>
 
+  <!-- FOOTER -->
   <footer>
     <div class="logo">El<span>vix</span> Technologies</div>
-    <p>© 2025 Elvix Technologies</p>
+    <p>© 2025 Elvix Technologies · Chennai</p>
   </footer>
 
   <script src="https://cdn.jsdelivr.net/npm/tsparticles@2.12.0/tsparticles.bundle.min.js"></script>
