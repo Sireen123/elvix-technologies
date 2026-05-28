@@ -8,28 +8,48 @@
   <link rel="stylesheet" href="style.css"/>
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/aos@2.3.4/dist/aos.css"/>
   <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;500;700&display=swap" rel="stylesheet"/>
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@6.4.0/css/all.min.css"/>
 </head>
 <body>
 
-  <!-- CUSTOM CURSOR -->
+  <!-- CURSOR -->
   <div class="cursor-dot"></div>
   <div class="cursor-ring"></div>
 
-  <!-- LOADING SCREEN -->
+  <!-- LOADER -->
   <div id="loader">
     <div class="loader-logo">El<span>vix</span></div>
     <div class="loader-bar"><div class="loader-fill"></div></div>
     <p class="loader-text">Loading experience...</p>
   </div>
 
+  <!-- PAGE TRANSITION -->
+  <div class="page-transition"></div>
+
   <!-- PARTICLES -->
   <div id="tsparticles"></div>
 
-  <!-- BACKGROUND ORBS -->
+  <!-- BG ORBS -->
   <div class="bg">
     <div class="orb orb1"></div>
     <div class="orb orb2"></div>
     <div class="orb orb3"></div>
+  </div>
+
+  <!-- FLOATING SOCIAL ICONS -->
+  <div class="social-float">
+    <a href="https://instagram.com/elvix_technologies" target="_blank" title="Instagram">
+      <i class="fab fa-instagram"></i>
+    </a>
+    <a href="https://github.com/sireen123" target="_blank" title="GitHub">
+      <i class="fab fa-github"></i>
+    </a>
+    <a href="https://wa.me/919677721804" target="_blank" title="WhatsApp">
+      <i class="fab fa-whatsapp"></i>
+    </a>
+    <a href="https://linkedin.com" target="_blank" title="LinkedIn">
+      <i class="fab fa-linkedin"></i>
+    </a>
   </div>
 
   <!-- NAV -->
@@ -37,10 +57,11 @@
     <div class="logo split-text">El<span>vix</span></div>
     <ul>
       <li><a href="#services">Services</a></li>
+      <li><a href="#skills">Skills</a></li>
       <li><a href="#contact">Contact</a></li>
     </ul>
     <a href="https://wa.me/919677721804?text=Hi!%20I%20want%20to%20hire%20Elvix%20Technologies" target="_blank">
-      <button class="cta-btn">Hire Us 💬</button>
+      <button class="cta-btn">Hire Us</button>
     </a>
   </nav>
 
@@ -48,13 +69,13 @@
   <section class="hero">
     <div class="badge"><span class="dot"></span> Now taking projects</div>
     <h1>We build things that<br><span id="typed-text"></span><span class="cursor-blink">|</span></h1>
-    <p class="sub">Websites · Android Apps · AI Solutions</p>
+    <p class="sub">Websites &middot; Android Apps &middot; AI Solutions</p>
     <div class="hero-btns">
       <a href="https://wa.me/919677721804?text=Hi!%20I%20want%20to%20start%20a%20project%20with%20Elvix" target="_blank">
-        <button class="btn-primary split-text">Start a Project 🚀</button>
+        <button class="btn-primary split-text">Start a Project</button>
       </a>
       <a href="https://github.com/sireen123" target="_blank">
-        <button class="btn-outline">See Our Work 🐙</button>
+        <button class="btn-outline">See Our Work</button>
       </a>
     </div>
     <div class="scroll-hint">
@@ -63,7 +84,7 @@
     </div>
   </section>
 
-  <!-- WAVE DIVIDER -->
+  <!-- WAVE -->
   <div class="wave-divider">
     <svg viewBox="0 0 1440 80" preserveAspectRatio="none">
       <path d="M0,40 C360,80 1080,0 1440,40 L1440,80 L0,80 Z" fill="rgba(124,92,252,0.08)"/>
@@ -77,52 +98,52 @@
       <h2 class="split-text">Services built for real results</h2>
     </div>
     <div class="cards-grid">
-      <div class="card flip-card" data-aos="fade-up" data-aos-delay="0">
+      <div class="flip-card" data-aos="fade-up" data-aos-delay="0">
         <div class="flip-inner">
           <div class="flip-front">
-            <div class="card-icon">🌐</div>
+            <div class="card-icon">&#127760;</div>
             <h3>Web Development</h3>
             <p>Hover to know more</p>
           </div>
           <div class="flip-back">
             <h3>Web Development</h3>
-            <p>React, HTML, CSS, JavaScript. Fast, beautiful, responsive websites that convert visitors into paying clients.</p>
-            <span class="card-tag">React · JS · CSS</span>
+            <p>React, HTML, CSS, JS. Fast, beautiful websites that convert visitors into paying clients.</p>
+            <span class="card-tag">React &middot; JS &middot; CSS</span>
           </div>
         </div>
       </div>
-      <div class="card flip-card" data-aos="fade-up" data-aos-delay="100">
+      <div class="flip-card" data-aos="fade-up" data-aos-delay="100">
         <div class="flip-inner">
           <div class="flip-front">
-            <div class="card-icon">📱</div>
+            <div class="card-icon">&#128241;</div>
             <h3>Android Apps</h3>
             <p>Hover to know more</p>
           </div>
           <div class="flip-back">
             <h3>Android Apps</h3>
             <p>Native Android apps with smooth UI, Firebase, APIs and full backend integration.</p>
-            <span class="card-tag">Java · Kotlin · Firebase</span>
+            <span class="card-tag">Java &middot; Kotlin &middot; Firebase</span>
           </div>
         </div>
       </div>
-      <div class="card flip-card" data-aos="fade-up" data-aos-delay="200">
+      <div class="flip-card" data-aos="fade-up" data-aos-delay="200">
         <div class="flip-inner">
           <div class="flip-front">
-            <div class="card-icon">🤖</div>
+            <div class="card-icon">&#129302;</div>
             <h3>AI Integration</h3>
             <p>Hover to know more</p>
           </div>
           <div class="flip-back">
             <h3>AI Integration</h3>
             <p>Chatbots, fraud detection, smart dashboards. AI features built into your product.</p>
-            <span class="card-tag">Python · TensorFlow</span>
+            <span class="card-tag">Python &middot; TensorFlow</span>
           </div>
         </div>
       </div>
-      <div class="card flip-card" data-aos="fade-up" data-aos-delay="300">
+      <div class="flip-card" data-aos="fade-up" data-aos-delay="300">
         <div class="flip-inner">
           <div class="flip-front">
-            <div class="card-icon">🎓</div>
+            <div class="card-icon">&#127891;</div>
             <h3>Student Projects</h3>
             <p>Hover to know more</p>
           </div>
@@ -136,7 +157,7 @@
     </div>
   </section>
 
-  <!-- WAVE DIVIDER 2 -->
+  <!-- WAVE 2 -->
   <div class="wave-divider wave2">
     <svg viewBox="0 0 1440 80" preserveAspectRatio="none">
       <path d="M0,40 C480,0 960,80 1440,40 L1440,80 L0,80 Z" fill="rgba(0,212,170,0.06)"/>
@@ -163,16 +184,50 @@
     </div>
   </section>
 
+  <!-- SKILLS -->
+  <section id="skills" class="skills-section">
+    <div class="section-label" data-aos="fade-up">
+      <span class="tag">What we know</span>
+      <h2 class="split-text">Our Tech Skills</h2>
+    </div>
+    <div class="skills-grid">
+      <div class="skill-item" data-aos="fade-up" data-aos-delay="0">
+        <div class="skill-top"><span>Web Development</span><span class="skill-pct">90%</span></div>
+        <div class="skill-bar"><div class="skill-fill" data-width="90"></div></div>
+      </div>
+      <div class="skill-item" data-aos="fade-up" data-aos-delay="100">
+        <div class="skill-top"><span>Android Development</span><span class="skill-pct">85%</span></div>
+        <div class="skill-bar"><div class="skill-fill" data-width="85"></div></div>
+      </div>
+      <div class="skill-item" data-aos="fade-up" data-aos-delay="200">
+        <div class="skill-top"><span>AI / Machine Learning</span><span class="skill-pct">80%</span></div>
+        <div class="skill-bar"><div class="skill-fill" data-width="80"></div></div>
+      </div>
+      <div class="skill-item" data-aos="fade-up" data-aos-delay="300">
+        <div class="skill-top"><span>UI / UX Design</span><span class="skill-pct">88%</span></div>
+        <div class="skill-bar"><div class="skill-fill" data-width="88"></div></div>
+      </div>
+      <div class="skill-item" data-aos="fade-up" data-aos-delay="400">
+        <div class="skill-top"><span>Firebase &amp; Backend</span><span class="skill-pct">82%</span></div>
+        <div class="skill-bar"><div class="skill-fill" data-width="82"></div></div>
+      </div>
+      <div class="skill-item" data-aos="fade-up" data-aos-delay="500">
+        <div class="skill-top"><span>Python &amp; Data Science</span><span class="skill-pct">78%</span></div>
+        <div class="skill-bar"><div class="skill-fill" data-width="78"></div></div>
+      </div>
+    </div>
+  </section>
+
   <!-- CONTACT -->
   <section id="contact" class="contact" data-aos="fade-up">
     <h2 class="split-text">Let's build something great</h2>
-    <p>Drop a message — we reply within 24 hours</p>
+    <p>Drop a message &mdash; we reply within 24 hours</p>
     <div class="form-box">
       <form action="https://formspree.io/f/xojbyzjz" method="POST">
         <input type="text" name="name" placeholder="Your name" required/>
         <input type="email" name="email" placeholder="Your email" required/>
         <textarea name="message" placeholder="Tell us about your project..."></textarea>
-        <button type="submit" class="btn-primary">Send Message →</button>
+        <button type="submit" class="btn-primary">Send Message</button>
       </form>
     </div>
   </section>
@@ -180,12 +235,11 @@
   <!-- FOOTER -->
   <footer>
     <div class="logo">El<span>vix</span> Technologies</div>
-    <p>© 2025 Elvix Technologies · Chennai</p>
+    <p>&copy; 2025 Elvix Technologies &middot; Chennai</p>
   </footer>
 
   <script src="https://cdn.jsdelivr.net/npm/tsparticles@2.12.0/tsparticles.bundle.min.js"></script>
   <script src="https://cdn.jsdelivr.net/npm/aos@2.3.4/dist/aos.js"></script>
-  <script src="https://cdn.jsdelivr.net/npm/vanilla-tilt@1.8.1/dist/vanilla-tilt.min.js"></script>
   <script src="script.js"></script>
 </body>
 </html>
