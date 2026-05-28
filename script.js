@@ -2,25 +2,35 @@
 window.addEventListener('load', () => {
   setTimeout(() => {
     document.getElementById('loader').classList.add('hide');
-  }, 2500);
+  }, 2600);
 });
 
-// 2. CUSTOM CURSOR + TRAIL
+// 2. PAGE TRANSITION
+document.querySelectorAll('a[href^="http"]').forEach(link => {
+  link.addEventListener('click', e => {
+    const pt = document.querySelector('.page-transition');
+    pt.classList.add('active');
+    setTimeout(() => pt.classList.remove('active'), 600);
+  });
+});
+
+// 3. CUSTOM CURSOR + TRAIL
 const dot = document.querySelector('.cursor-dot');
 const ring = document.querySelector('.cursor-ring');
+const TRAIL_COUNT = 10;
 const trails = [];
-const TRAIL_COUNT = 8;
 
 for (let i = 0; i < TRAIL_COUNT; i++) {
   const t = document.createElement('div');
   t.classList.add('cursor-trail');
-  t.style.opacity = (1 - i / TRAIL_COUNT) * 0.4;
-  t.style.width = t.style.height = (6 - i * 0.5) + 'px';
+  const size = 6 - i * 0.4;
+  t.style.cssText = `width:${size}px;height:${size}px;background:${i % 2 === 0 ? '#7c5cfc' : '#00d4aa'};opacity:${0.5 - i * 0.04};`;
   document.body.appendChild(t);
-  trails.push({ el: t, x: 0, y: 0 });
+  trails.push({ el: t, x: window.innerWidth / 2, y: window.innerHeight / 2 });
 }
 
-let mx = 0, my = 0;
+let mx = window.innerWidth / 2, my = window.innerHeight / 2;
+
 document.addEventListener('mousemove', e => {
   mx = e.clientX; my = e.clientY;
   dot.style.left = mx + 'px';
@@ -31,21 +41,22 @@ document.addEventListener('mousemove', e => {
 
 document.querySelectorAll('a, button').forEach(el => {
   el.addEventListener('mouseenter', () => {
-    ring.style.transform = 'translate(-50%,-50%) scale(1.8)';
-    ring.style.borderColor = 'rgba(0,212,170,0.8)';
+    ring.style.transform = 'translate(-50%,-50%) scale(2)';
+    ring.style.borderColor = 'rgba(0,212,170,0.9)';
+    ring.style.background = 'rgba(0,212,170,0.05)';
   });
   el.addEventListener('mouseleave', () => {
     ring.style.transform = 'translate(-50%,-50%) scale(1)';
-    ring.style.borderColor = 'rgba(124,92,252,0.6)';
+    ring.style.borderColor = 'rgba(124,92,252,0.7)';
+    ring.style.background = 'transparent';
   });
 });
 
 function animateTrails() {
   let px = mx, py = my;
-  trails.forEach((t, i) => {
-    const delay = 0.6;
-    t.x += (px - t.x) * delay;
-    t.y += (py - t.y) * delay;
+  trails.forEach(t => {
+    t.x += (px - t.x) * 0.55;
+    t.y += (py - t.y) * 0.55;
     t.el.style.left = t.x + 'px';
     t.el.style.top = t.y + 'px';
     px = t.x; py = t.y;
@@ -54,23 +65,57 @@ function animateTrails() {
 }
 animateTrails();
 
-// 3. PARTICLES
+// 4. CLICK RIPPLE
+document.addEventListener('click', e => {
+  const r = document.createElement('div');
+  r.classList.add('ripple');
+  r.style.left = e.clientX + 'px';
+  r.style.top = e.clientY + 'px';
+  r.style.width = r.style.height = '60px';
+  document.body.appendChild(r);
+  setTimeout(() => r.remove(), 800);
+});
+
+// 5. SHOOTING STARS
+function createStar() {
+  const star = document.createElement('div');
+  star.classList.add('shooting-star');
+  star.style.cssText = `
+    top: ${Math.random() * 60}%;
+    left: ${Math.random() * 100}%;
+    animation: shoot ${1.5 + Math.random()}s linear forwards;
+  `;
+  document.body.appendChild(star);
+  setTimeout(() => star.remove(), 2500);
+}
+
+const style = document.createElement('style');
+style.textContent = `
+  @keyframes shoot {
+    0% { transform: translateX(0) translateY(0) rotate(-45deg); opacity: 1; }
+    100% { transform: translateX(-300px) translateY(300px) rotate(-45deg); opacity: 0; }
+  }
+`;
+document.head.appendChild(style);
+setInterval(createStar, 2000);
+
+// 6. PARTICLES
 tsParticles.load("tsparticles", {
   particles: {
-    number: { value: 70 },
+    number: { value: 60 },
     color: { value: ["#7c5cfc", "#00d4aa", "#ff6b9d"] },
-    opacity: { value: 0.25 },
-    size: { value: { min: 1, max: 3 } },
-    move: { enable: true, speed: 0.6 },
-    links: { enable: true, distance: 120, color: "#7c5cfc", opacity: 0.1 }
+    opacity: { value: 0.2 },
+    size: { value: { min: 1, max: 2.5 } },
+    move: { enable: true, speed: 0.5 },
+    links: { enable: true, distance: 120, color: "#7c5cfc", opacity: 0.08 }
   },
   background: { color: "transparent" }
 });
 
-// 4. SCROLL ANIMATIONS
+// 7. SCROLL ANIMATIONS
 AOS.init({ duration: 800, once: true, offset: 80 });
 
-// 5. TYPING EFFECT
+// 8. TYPING EFFECT
 const words = ["actually work.", "stand out.", "make money.", "get noticed.", "go viral."];
 let wi = 0, ci = 0, deleting = false;
 const el = document.getElementById("typed-text");
@@ -88,9 +133,9 @@ function type() {
 }
 type();
 
-// 6. COUNTER ANIMATION
+// 9. COUNTER
 const counters = document.querySelectorAll(".count");
-const observer = new IntersectionObserver(entries => {
+const counterObs = new IntersectionObserver(entries => {
   entries.forEach(entry => {
     if (entry.isIntersecting) {
       const target = +entry.target.getAttribute("data-target");
@@ -101,21 +146,36 @@ const observer = new IntersectionObserver(entries => {
         if (count >= target) { entry.target.textContent = target; clearInterval(timer); }
         else entry.target.textContent = count;
       }, 30);
-      observer.unobserve(entry.target);
+      counterObs.unobserve(entry.target);
     }
   });
 }, { threshold: 0.5 });
-counters.forEach(c => observer.observe(c));
+counters.forEach(c => counterObs.observe(c));
 
-// 7. NAV SCROLL EFFECT
+// 10. SKILL BARS
+const skillFills = document.querySelectorAll('.skill-fill');
+const skillObs = new IntersectionObserver(entries => {
+  entries.forEach(entry => {
+    if (entry.isIntersecting) {
+      const w = entry.target.getAttribute('data-width');
+      entry.target.style.width = w + '%';
+      skillObs.unobserve(entry.target);
+    }
+  });
+}, { threshold: 0.3 });
+skillFills.forEach(s => skillObs.observe(s));
+
+// 11. NAV SCROLL
 window.addEventListener('scroll', () => {
   document.getElementById('navbar').classList.toggle('scrolled', window.scrollY > 50);
 });
 
-// 8. SPLIT TEXT EFFECT
+// 12. SPLIT TEXT
 document.querySelectorAll('.split-text').forEach(el => {
-  const text = el.textContent;
-  el.innerHTML = text.split('').map(c =>
-    c === ' ' ? ' ' : `<span class="char">${c}</span>`
-  ).join('');
+  const text = el.innerHTML;
+  if (!el.querySelector('.char')) {
+    el.innerHTML = el.textContent.split('').map(c =>
+      c === ' ' ? ' ' : `<span class="char">${c}</span>`
+    ).join('');
+  }
 });
